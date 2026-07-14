@@ -31,17 +31,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
+      - name: Build
         run: pnpm run build
 
-      - name: Setup GitHub Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload Build
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
